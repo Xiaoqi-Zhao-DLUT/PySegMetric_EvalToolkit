@@ -112,10 +112,18 @@
 - <a href="https://arxiv.org/pdf/2006.11392.pdf?ref=https://githubhelp.com"><strong>PraNet: Parallel Reverse Attention Network
 for Polyp Segmentation, MICCAI 2020.[mIoU, mDice, Fw, Sm, Em, MAE]</strong></a>
 ### 其他类型分割任务 （人像分割、缺陷检测、表面检测、物体内部探伤检测等）
-
-
-
-
+<table><tr>
+<td><img src="./image/human.jpg" width="300" border=0></td>
+<td><img src="./image/human.png" width="300" border=0></td>
+</tr></table> 
+<table><tr>
+<td><img src="./image/Magnetic-tile-defect-datasets.-master.jpg" width="300" border=0></td>
+<td><img src="./image/Magnetic-tile-defect-datasets.-master.png" width="300" border=0></td>
+</tr></table> 
+<table><tr>
+<td><img src="./image/CrackForest.jpg" width="300" border=0></td>
+<td><img src="./image/CrackForest.png" width="300" border=0></td>
+</tr></table> 
 
 
 ## 评测指标参考文献
