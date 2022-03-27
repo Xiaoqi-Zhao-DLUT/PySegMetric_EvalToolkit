@@ -61,6 +61,7 @@
     - <a href="https://link.springer.com/content/pdf/10.1007%2F978-3-030-87193-2_68.pdf"><strong>Learnable Oriented-Derivative Network for Polyp Segmentation, MICCAI 2021.[mIoU, mDice]</strong></a>
     - <a href="https://arxiv.org/pdf/2006.11392.pdf?ref=https://githubhelp.com"><strong>PraNet: Parallel Reverse Attention Network
 for Polyp Segmentation, MICCAI 2020.[mIoU, mDice, Fw, Sm, Em, MAE]</strong></a>
+9. 其他类型分割任务 （人像分割、缺陷检测、表面检测、物体内部探伤检测等）
 
 
 
