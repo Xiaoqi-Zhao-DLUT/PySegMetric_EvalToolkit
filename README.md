@@ -128,7 +128,7 @@ for Polyp Segmentation, MICCAI 2020.[mIoU, mDice, Fw, Sm, Em, MAE]</strong></a>
 ## 超快捷使用方法  
 - 安装./requirements.txt中的依赖
 - 对utils/config.py中的Models = {'Model1':Model1,'Model2':Model2}及test_datasets = {'dataset1':dataset1,'dataset2':dataset2}完成对应的路径设置。注意字典中的'dataset'及待测方法中的数据集文件夹名字应与真实的数据集名称保持一致。
-- 运行./test_score.py
+- 运行./test_score.py 数值预测结果日志将保留在当前目录中。
 ## 评测指标参考文献
 ```text
 @inproceedings{Fmax_mean,
