@@ -1,6 +1,5 @@
 import os
 from PIL import Image
-import torchvision.transforms as transforms
 
 class test_dataset:
     def __init__(self, image_root, gt_root):
@@ -10,10 +9,6 @@ class test_dataset:
 
         self.image_root = image_root
         self.gt_root = gt_root
-        self.transform = transforms.Compose([
-            transforms.ToTensor(),
-        ])
-        self.gt_transform = transforms.ToTensor()
         self.size = len(self.img_list)
         self.index = 0
 
