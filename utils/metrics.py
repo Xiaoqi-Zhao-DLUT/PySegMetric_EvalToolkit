@@ -1,7 +1,7 @@
 import numpy as np
 from scipy import ndimage
 from scipy.ndimage import convolve, distance_transform_edt as bwdist
-
+from sklearn.metrics import roc_auc_score
 
 class cal_fm(object):
     # Fmeasure(maxFm,meanFm)---Frequency-tuned salient region detection(CVPR 2009)
@@ -73,6 +73,23 @@ class cal_mae(object):
     def show(self):
         return np.mean(self.prediction)
 
+class cal_auc(object):
+    # mean absolute error
+    def __init__(self):
+        self.prediction = []
+
+    def update(self, pred, gt):
+        score = self.cal(pred, gt)
+        self.prediction.append(score)
+
+    def cal(self, pred, gt):
+
+        return roc_auc_score(gt.flatten(),pred.flatten())
+
+    def show(self):
+        return np.mean(self.prediction)
+
+
 class cal_dice(object):
     # mean absolute error
     def __init__(self):
@@ -141,7 +158,7 @@ class cal_acc(object):
     def show(self):
         return np.mean(self.prediction)
 
-class cal_iou(object):
+class cal_iou_f(object):
     # mean absolute error
     def __init__(self):
         self.prediction = []
@@ -168,6 +185,35 @@ class cal_iou(object):
     def show(self):
         return np.mean(self.prediction)
 
+class cal_iou_b(object):
+    # mean absolute error
+    def __init__(self):
+        self.prediction = []
+
+    def update(self, pred, gt):
+        score = self.cal(pred, gt)
+        self.prediction.append(score)
+
+    # def cal(self, input, target):
+    #     classes = 1
+    #     intersection = np.logical_and(target == classes, input == classes)
+    #     # print(intersection.any())
+    #     union = np.logical_or(target == classes, input == classes)
+    #     return np.sum(intersection) / np.sum(union)
+
+    def cal(self, input, target):
+        smooth = 1e-5
+        b_input = 1-input
+        b_target = 1 - target
+        b_input = b_input > 0.5
+        b_target = b_target > 0.5
+        intersection = (b_input & b_target).sum()
+        union = (b_input | b_target).sum()
+
+        return (intersection + smooth) / (union + smooth)
+
+    def show(self):
+        return np.mean(self.prediction)
     # smooth = 1e-5
     #
     # if torch.is_tensor(output):
