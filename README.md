@@ -13,9 +13,9 @@
 - <p align="left"><img align="center" src="https://render.githubusercontent.com/render/math?math={Meandice (mDice)}\textbf{\uparrow}" alt="zxq" /></p>
 - <p align="left"><img align="center" src="https://render.githubusercontent.com/render/math?math={Meaniou (mIoU)}\textbf{\uparrow}" alt="zxq" /></p>
 - <p align="left"><img align="center" src="https://render.githubusercontent.com/render/math?math={Acc}\textbf{\uparrow}" alt="zxq" /></p>
-- <p align="left"><img align="center" src="https://render.githubusercontent.com/render/math?math={Area Under roc Curve (AUC)}\textbf{\uparrow}" alt="zxq" /></p>
 - <p align="left"><img align="center" src="https://render.githubusercontent.com/render/math?math={MAE}\textbf{\downarrow}" alt="zxq" /></p>
 - <p align="left"><img align="center" src="https://render.githubusercontent.com/render/math?math={Ber}\textbf{\downarrow}" alt="zxq" /></p>
+- <p align="left"><img align="center" src="https://render.githubusercontent.com/render/math?math={Area Under roc Curve (AUC)}\textbf{\uparrow}"/></p>
 
 ## 分割任务中使用各类评估指标的代表性顶会论文工作
 ### 显著性目标检测（Salient Object Detection）
