@@ -1,7 +1,7 @@
 import numpy as np
 import os
 from utils.test_data import test_dataset
-from utils.metrics import cal_mae,cal_fm,cal_sm,cal_em,cal_wfm, cal_dice, cal_iou,cal_ber,cal_acc
+from utils.metrics import cal_mae,cal_fm,cal_sm,cal_em,cal_wfm, cal_dice, cal_iou_f,cal_iou_b,cal_ber,cal_acc,cal_auc
 from utils.config import test_datasets
 from utils.config import Models
 from tqdm import tqdm
@@ -13,7 +13,8 @@ def main(log_path):
             gt_root = root+'/GT'
             if os.path.exists(sal_root):
                 test_loader = test_dataset(sal_root, gt_root)
-                mae,fm,sm,em,wfm, m_dice, m_iou,ber,acc= cal_mae(),cal_fm(test_loader.size),cal_sm(),cal_em(),cal_wfm(), cal_dice(), cal_iou(),cal_ber(),cal_acc()
+                auc,mae,fm,sm,em,wfm, m_dice, iou_f, iou_b,ber,acc= cal_auc(),cal_mae(),cal_fm(test_loader.size),cal_sm(),cal_em(),cal_wfm(), cal_dice(), cal_iou_f(),cal_iou_b(),cal_ber(),cal_acc()
+
                 for i in tqdm(range(test_loader.size)):
                     sal, gt = test_loader.load_data()
                     if sal.size != gt.size:
@@ -40,9 +41,11 @@ def main(log_path):
                     em.update(res,gt)
                     wfm.update(res,gt)
                     m_dice.update(res,gt)
-                    m_iou.update(res,gt)
+                    iou_f.update(res,gt)
+                    iou_b.update(res,gt)
                     ber.update(res,gt)
                     acc.update(res,gt)
+                    auc.update(res,gt)
 
                 MAE = mae.show()
                 maxf,meanf,_,_ = fm.show()
@@ -50,14 +53,16 @@ def main(log_path):
                 em = em.show()
                 wfm = wfm.show()
                 m_dice = m_dice.show()
-                m_iou = m_iou.show()
+                iou_f = iou_f.show()
+                iou_b = iou_b.show()
                 ber = ber.show()
                 acc = acc.show()
-                log = 'method_name: {} dataset: {} MAE: {:.4f} Ber: {:.4f} maxF: {:.4f} avgF: {:.4f} wfm: {:.4f} Sm: {:.4f} Em: {:.4f} M_dice: {:.4f} M_iou: {:.4f} Acc: {:.4f}'.format(method_name,name, MAE,ber, maxf,meanf,wfm,sm,em, m_dice, m_iou,acc)
+                auc = auc.show()
+                log = 'method_name: {} dataset: {} MAE: {:.4f} Ber: {:.4f} maxF: {:.4f} avgF: {:.4f} wfm: {:.4f} Sm: {:.4f} Em: {:.4f} M_dice: {:.4f} iou_f: {:.4f} iou_b: {:.4f} m_iou: {:.4f} Acc: {:.4f}  auc: {:.4f}'.format(method_name,name, MAE,ber, maxf,meanf,wfm,sm,em, m_dice, iou_f,iou_b,(iou_f+iou_b)/2,acc,auc)
                 open(log_path, 'a').write(log + '\n')
                 print(log)
 
 
 if __name__ == '__main__':
-    log_path = os.path.join('./test_result' + '.txt')
+    log_path = os.path.join('./model_results' + '.txt')
     main(log_path)
