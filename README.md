@@ -7,14 +7,53 @@
 </p>
   
 ## 已集成的评估指标
-- <p align="left"><img align="center" src="https://render.githubusercontent.com/render/math?math={F}_{measure}(F_{max},F_{mean},F_{weighted})\textbf{\uparrow}" alt="zxq"  /></p>
-- <p align="left"><img align="center" src="https://render.githubusercontent.com/render/math?math={S}_{measure}\textbf{\uparrow}" alt="zxq" /></p>
-- <p align="left"><img align="center" src="https://render.githubusercontent.com/render/math?math={E}_{measure}\textbf{\uparrow}" alt="zxq" /></p>  
-- <p align="left"><img align="center" src="https://render.githubusercontent.com/render/math?math={Meandice (mDice)}\textbf{\uparrow}" alt="zxq" /></p>
-- <p align="left"><img align="center" src="https://render.githubusercontent.com/render/math?math={Meaniou (mIoU)}\textbf{\uparrow}" alt="zxq" /></p>
-- <p align="left"><img align="center" src="https://render.githubusercontent.com/render/math?math={Acc}\textbf{\uparrow}" alt="zxq" /></p>
-- <p align="left"><img align="center" src="https://render.githubusercontent.com/render/math?math={MAE}\textbf{\downarrow}" alt="zxq" /></p>
-- <p align="left"><img align="center" src="https://render.githubusercontent.com/render/math?math={Ber}\textbf{\downarrow}" alt="zxq" /></p>
+- **Pixel Accuracy (PA)** is calculated based on
+the binarized prediction mask and ground-truth:
+<p align="center">
+    <img src="image/PA_metric.png" width=40%/> <br />
+</p>
+
+- **F-measure** is a metric that comprehensively considers both precision and recall:
+<p align="center">
+    <img src="image/Fm_metric.png" width=40%/> <br />
+</p>
+
+- **weighted F-measure** is proposed to improve the metric F-measure. It assigns different weights (ω) to precision and recall across different errors at different locations, considering the neighborhood information:
+<p align="center">
+    <img src="image/Fm_metric.png" width=40%/> <br />
+</p>
+
+- **S-measure** evaluates the spatial structure similarity by combining the region-aware
+structural similarity Sr and the object-aware structural similarity So:
+<p align="center">
+    <img src="image/Sm_metric.png" width=40%/> <br />
+</p>
+
+- **E-measure**  can jointly capture image level statistics and local pixel matching information:
+<p align="center">
+    <img src="image/Em_metric.png" width=40%/> <br />
+</p>
+
+- **IOU** is the most common metric for evaluating classification accuracy:
+<p align="center">
+    <img src="image/IOU_metric.png" width=40%/> <br />
+</p>
+
+- **Dice** is a statistic used to gauge the similarity of two samples and become the most used metric in validating medical image segmentation:
+<p align="center">
+    <img src="image/DICE_metric.png" width=40%/> <br />
+</p>
+
+- **Balanced error rate (BER)** is a common metric to evaluate shadow detection performance, where shadow and non-shadow regions contribute equally to the overall performance without considering their relative areas:
+<p align="center">
+    <img src="image/BER_metric.png" width=40%/> <br />
+</p>
+
+
+- **MAE** measures the average absolute difference between the prediction and the ground truth pixel by pixel:
+<p align="center">
+    <img src="image/MAE_metric.png" width=40%/> <br />
+</p>
 
 ## 分割任务中使用各类评估指标的代表性顶会论文工作
 ### 显著性目标检测（Salient Object Detection）
